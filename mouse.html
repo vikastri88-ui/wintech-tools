@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>WinTech Tools - Mouse Test</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        .mouse-page {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .mouse-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .mouse-card h2 {
+            margin-top: 0;
+        }
+
+        .mouse-area {
+            margin: 30px auto;
+            height: 300px;
+            max-width: 750px;
+            border: 3px dashed #ff7a00;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff7ed;
+            cursor: crosshair;
+        }
+
+        .mouse-area h2 {
+            color: #ff7a00;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .test-button {
+            padding: 15px 25px;
+            border-radius: 10px;
+            background: #e5e7eb;
+            font-weight: bold;
+            min-width: 150px;
+            transition: 0.2s;
+        }
+
+        .test-button.active {
+            background: #ff7a00;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .status {
+            margin-top: 20px;
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .reset {
+            margin-top: 25px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            background: #111827;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .reset:hover {
+            background: #ff7a00;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header class="test-header">
+
+        <div class="test-logo">
+            WinTech <span>Tools</span>
+        </div>
+
+        <nav class="test-nav">
+
+            <a href="home.html">Home</a>
+
+            <a href="index.html">⌨️ Keyboard</a>
+
+           <a href="mouse.html" class="active">🖱️ Mouse</a>
+
+            <a href="mic.html">🎤 Mic</a>
+
+            <a href="camera.html">📷 Camera</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- MOUSE TEST -->
+
+    <div class="mouse-page">
+
+        <div class="mouse-card">
+
+            <h2>🖱️ Mouse Test</h2>
+
+            <a href="home.html" class="home-button">
+                ← Back to Home
+            </a>
+
+            <p>
+                नीचे दिए गए बॉक्स में Mouse को
+                Move और Click करके Test करें।
+            </p>
+
+
+            <!-- BUTTON STATUS -->
+
+            <div class="buttons">
+
+                <div class="test-button" id="left">
+                    Left Click
+                </div>
+
+                <div class="test-button" id="middle">
+                    Middle Click
+                </div>
+
+                <div class="test-button" id="right">
+                    Right Click
+                </div>
+
+            </div>
+
+
+            <!-- MOUSE AREA -->
+
+            <div class="mouse-area" id="mouseArea">
+
+                <h2>
+                    Mouse यहाँ Move करें
+                </h2>
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="status" id="status">
+                Mouse को Move करें
+            </div>
+           <div class="scroll-status" id="scrollStatus">
+    🖱️ Scroll Wheel: Test करें
+</div> 
+
+
+            <!-- RESET -->
+
+            <button class="reset"
+                    onclick="resetMouse()">
+
+                Reset Test
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+        © 2026 WinTech Tools
+    </footer>
+
+
+    <!-- MOUSE SCRIPT -->
+
+    <script>
+
+        const mouseArea =
+            document.getElementById("mouseArea");
+
+        const status =
+            document.getElementById("status");
+
+        const left =
+            document.getElementById("left");
+
+        const middle =
+            document.getElementById("middle");
+
+        const right =
+            document.getElementById("right");
+
+
+        /* MOUSE MOVEMENT */
+
+        mouseArea.addEventListener(
+            "mousemove",
+            function(event) {
+
+                status.innerText =
+                    "Mouse Position: X = " +
+                    event.offsetX +
+                    " | Y = " +
+                    event.offsetY;
+
+            }
+        );
+
+
+        /* MOUSE CLICK */
+
+        mouseArea.addEventListener(
+            "mousedown",
+            function(event) {
+
+                event.preventDefault();
+
+
+                if (event.button === 0) {
+
+                    left.classList.add("active");
+
+                    status.innerText =
+                        "✅ Left Click Working";
+
+                }
+
+
+                if (event.button === 1) {
+
+                    middle.classList.add("active");
+
+                    status.innerText =
+                        "✅ Middle Click Working";
+
+                }
+
+
+                if (event.button === 2) {
+
+                    right.classList.add("active");
+
+                    status.innerText =
+                        "✅ Right Click Working";
+
+                }
+
+            }
+        );
+
+
+        /* DISABLE RIGHT CLICK MENU */
+
+        mouseArea.addEventListener(
+            "contextmenu",
+            function(event) {
+
+                event.preventDefault();
+
+            }
+        );
+
+
+        /* RESET */
+
+        function resetMouse() {
+
+            left.classList.remove("active");
+
+            middle.classList.remove("active");
+
+            right.classList.remove("active");
+
+            status.innerText =
+                "Mouse को Move करें";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
