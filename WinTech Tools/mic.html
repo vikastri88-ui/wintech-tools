@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>WinTech Tools - Microphone Test</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        .mic-page {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .mic-card {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .mic-icon {
+            font-size: 80px;
+            margin: 15px;
+        }
+
+        .mic-card h2 {
+            margin-top: 5px;
+        }
+
+        .mic-status {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px;
+        }
+
+        .meter {
+            width: 100%;
+            height: 25px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 25px 0;
+        }
+
+        .level {
+            height: 100%;
+            width: 0%;
+            background: #ff7a00;
+            transition: width 0.05s;
+        }
+
+        .mic-button {
+            padding: 13px 28px;
+            border: none;
+            border-radius: 8px;
+            background: #ff7a00;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .mic-button:hover {
+            background: #e56700;
+        }
+
+        .stop-button {
+            background: #111827;
+        }
+
+        .stop-button:hover {
+            background: #dc2626;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header class="test-header">
+
+        <div class="test-logo">
+            WinTech <span>Tools</span>
+        </div>
+
+        <nav class="test-nav">
+
+            <a href="home.html">Home</a>
+
+            <a href="index.html">⌨️ Keyboard</a>
+
+            <a href="mouse.html">🖱️ Mouse</a>
+
+            <a href="mic.html" class="active">🎤 Mic</a>
+
+            <a href="camera.html">📷 Camera</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- MICROPHONE TEST -->
+
+    <div class="mic-page">
+
+        <div class="mic-card">
+
+            <div class="mic-icon">
+                🎤
+            </div>
+
+            <h2>
+                Microphone Test
+            </h2>
+
+            <a href="home.html" class="home-button">
+                ← Back to Home
+            </a>
+
+            <p>
+                Start Test दबाएँ और Microphone में बोलें।
+            </p>
+
+
+            <!-- STATUS -->
+
+            <div class="mic-status" id="status">
+                Microphone Test शुरू करें
+            </div>
+
+
+            <!-- LEVEL METER -->
+
+            <div class="meter">
+
+                <div class="level"
+                     id="level">
+                </div>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <button class="mic-button"
+                    onclick="startMic()">
+
+                🎤 Start Test
+
+            </button>
+
+
+            <button class="mic-button stop-button"
+                    onclick="stopMic()">
+
+                ⛔ Stop Test
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+        © 2026 WinTech Tools
+    </footer>
+
+
+    <!-- MICROPHONE SCRIPT -->
+
+    <script>
+
+        let audioContext;
+
+        let analyser;
+
+        let microphone;
+
+        let animationFrame;
+
+        let stream;
+
+
+        async function startMic() {
+
+            try {
+
+                stream =
+                    await navigator.mediaDevices.getUserMedia({
+                        audio: true
+                    });
+
+
+                audioContext =
+                    new AudioContext();
+
+
+                analyser =
+                    audioContext.createAnalyser();
+
+
+                microphone =
+                    audioContext.createMediaStreamSource(
+                        stream
+                    );
+
+
+                microphone.connect(analyser);
+
+
+                analyser.fftSize = 256;
+
+
+                const dataArray =
+                    new Uint8Array(
+                        analyser.frequencyBinCount
+                    );
+
+
+                document.getElementById("status").innerText =
+                    "✅ Microphone Working - बोलिए";
+
+
+                function updateLevel() {
+
+                    analyser.getByteFrequencyData(
+                        dataArray
+                    );
+
+
+                    let total = 0;
+
+
+                    for (
+                        let i = 0;
+                        i < dataArray.length;
+                        i++
+                    ) {
+
+                        total += dataArray[i];
+
+                    }
+
+
+                    let average =
+                        total / dataArray.length;
+
+
+                    let percent =
+                        Math.min(
+                            100,
+                            average * 2
+                        );
+
+
+                    document.getElementById(
+                        "level"
+                    ).style.width =
+                        percent + "%";
+
+
+                    animationFrame =
+                        requestAnimationFrame(
+                            updateLevel
+                        );
+
+                }
+
+
+                updateLevel();
+
+
+            } catch (error) {
+
+                document.getElementById(
+                    "status"
+                ).innerText =
+                    "❌ Microphone की अनुमति नहीं मिली";
+
+
+                alert(
+                    "Microphone इस्तेमाल करने के लिए Browser में Permission Allow करें।"
+                );
+
+            }
+
+        }
+
+
+        function stopMic() {
+
+            if (stream) {
+
+                stream.getTracks().forEach(
+                    track => {
+                        track.stop();
+                    }
+                );
+
+            }
+
+
+            if (animationFrame) {
+
+                cancelAnimationFrame(
+                    animationFrame
+                );
+
+            }
+
+
+            if (audioContext) {
+
+                audioContext.close();
+
+            }
+
+
+            document.getElementById(
+                "level"
+            ).style.width =
+                "0%";
+
+
+            document.getElementById(
+                "status"
+            ).innerText =
+                "Microphone Test बंद है";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

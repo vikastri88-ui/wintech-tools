@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>WinTech Tools - Camera Test</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        .camera-page {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .camera-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .camera-card h2 {
+            margin-top: 0;
+        }
+
+        .camera-status {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px;
+        }
+
+        video {
+            width: 100%;
+            max-width: 700px;
+            height: 400px;
+            object-fit: cover;
+            background: #111827;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .camera-button {
+            padding: 13px 28px;
+            border: none;
+            border-radius: 8px;
+            background: #ff7a00;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .camera-button:hover {
+            background: #e56700;
+        }
+
+        .stop-button {
+            background: #111827;
+        }
+
+        .stop-button:hover {
+            background: #dc2626;
+        }
+
+        @media (max-width: 600px) {
+
+            video {
+                height: 280px;
+            }
+
+            .camera-card {
+                padding: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header class="test-header">
+
+        <div class="test-logo">
+            WinTech <span>Tools</span>
+        </div>
+
+        <nav class="test-nav">
+
+            <a href="home.html">Home</a>
+
+            <a href="index.html">⌨️ Keyboard</a>
+
+            <a href="mouse.html">🖱️ Mouse</a>
+
+            <a href="mic.html">🎤 Mic</a>
+
+          <a href="camera.html" class="active">📷 Camera</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- CAMERA TEST -->
+
+    <div class="camera-page">
+
+        <div class="camera-card">
+
+            <h2>📷 Camera Test</h2>
+
+            <a href="home.html" class="home-button">
+                ← Back to Home
+            </a>
+
+            <p>
+                Start Test दबाएँ और अपने Camera को Check करें।
+            </p>
+
+
+            <!-- STATUS -->
+
+            <div class="camera-status" id="status">
+                Camera Test शुरू करें
+            </div>
+
+
+            <!-- CAMERA PREVIEW -->
+
+            <video
+                id="camera"
+                autoplay
+                playsinline>
+            </video>
+
+
+            <br>
+
+
+            <!-- BUTTONS -->
+
+            <button
+                class="camera-button"
+                onclick="startCamera()">
+
+                📷 Start Camera
+
+            </button>
+
+
+            <button
+                class="camera-button stop-button"
+                onclick="stopCamera()">
+
+                ⛔ Stop Camera
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+        © 2026 WinTech Tools
+    </footer>
+
+
+    <!-- CAMERA SCRIPT -->
+
+    <script>
+
+        let stream;
+
+
+        async function startCamera() {
+
+            try {
+
+                stream =
+                    await navigator.mediaDevices.getUserMedia({
+                        video: true
+                    });
+
+
+                const video =
+                    document.getElementById("camera");
+
+
+                video.srcObject =
+                    stream;
+
+
+                document.getElementById(
+                    "status"
+                ).innerText =
+                    "✅ Camera Working";
+
+            }
+
+
+            catch (error) {
+
+                document.getElementById(
+                    "status"
+                ).innerText =
+                    "❌ Camera की अनुमति नहीं मिली";
+
+
+                alert(
+                    "Camera इस्तेमाल करने के लिए Browser में Permission Allow करें।"
+                );
+
+            }
+
+        }
+
+
+        function stopCamera() {
+
+            if (stream) {
+
+                stream.getTracks().forEach(
+                    track => {
+                        track.stop();
+                    }
+                );
+
+
+                document.getElementById(
+                    "camera"
+                ).srcObject = null;
+
+            }
+
+
+            document.getElementById(
+                "status"
+            ).innerText =
+                "Camera Test बंद है";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

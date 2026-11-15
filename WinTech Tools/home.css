@@ -1,0 +1,485 @@
+/* ================================
+   WINTECH TOOLS - HOME CSS
+   ================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #111827;
+}
+
+
+/* ================================
+   HEADER
+   ================================ */
+
+.header {
+    background: #111827;
+    color: white;
+    min-height: 70px;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+/* LOGO */
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #ff7a00;
+}
+
+
+/* NAVIGATION */
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav a {
+    color: #e5e7eb;
+    text-decoration: none;
+    padding: 10px 13px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.nav a:hover {
+    background: #1f2937;
+    color: #ff7a00;
+}
+
+.nav a.active {
+    background: #ff7a00;
+    color: white;
+}
+
+
+/* ================================
+   HERO
+   ================================ */
+
+.hero {
+    min-height: 470px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 70px 20px;
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(255, 122, 0, 0.12),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f1f5f9
+        );
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 30px;
+    background: #fff1e6;
+    color: #e56700;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: clamp(38px, 6vw, 68px);
+    line-height: 1.05;
+    font-weight: 800;
+    color: #111827;
+}
+
+.hero h1 span {
+    display: block;
+    color: #ff7a00;
+}
+
+.hero p {
+    max-width: 680px;
+    margin: 25px auto;
+    color: #64748b;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* HERO BUTTONS */
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+}
+
+.hero-btn,
+.hero-secondary {
+    text-decoration: none;
+    padding: 13px 22px;
+    border-radius: 9px;
+    font-weight: bold;
+    transition: 0.2s ease;
+}
+
+.hero-btn {
+    background: #ff7a00;
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 122, 0, 0.25);
+}
+
+.hero-btn:hover {
+    background: #e56700;
+    transform: translateY(-2px);
+}
+
+.hero-secondary {
+    border: 1px solid #d1d5db;
+    color: #374151;
+    background: white;
+}
+
+.hero-secondary:hover {
+    border-color: #ff7a00;
+    color: #ff7a00;
+}
+
+.hero-line {
+    width: 70px;
+    height: 4px;
+    border-radius: 10px;
+    background: #ff7a00;
+    margin: 35px auto 0;
+}
+
+
+/* ================================
+   TOOLS SECTION
+   ================================ */
+
+.tools-section {
+    padding: 75px 5%;
+    background: #ffffff;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-badge {
+    color: #ff7a00;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.section-title h2 {
+    margin: 10px 0 8px;
+    font-size: 34px;
+    color: #111827;
+}
+
+.section-title p {
+    margin: 0;
+    color: #64748b;
+}
+
+
+/* TOOL GRID */
+
+.tools-grid {
+    max-width: 1150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+
+/* TOOL CARD */
+
+.tool-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 28px 22px;
+    text-align: center;
+    transition: 0.25s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+}
+
+.tool-card:hover {
+    transform: translateY(-7px);
+    border-color: #ffb06b;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.09);
+}
+
+
+/* TOOL ICON */
+
+.tool-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 18px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff1e6;
+    font-size: 38px;
+}
+
+.tool-card h3 {
+    margin: 0 0 12px;
+    font-size: 21px;
+    color: #111827;
+}
+
+.tool-card p {
+    min-height: 72px;
+    margin: 0 0 22px;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* TEST BUTTON */
+
+.test-btn {
+    display: inline-block;
+    text-decoration: none;
+    background: #111827;
+    color: white;
+    padding: 11px 17px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.2s ease;
+}
+
+.test-btn:hover {
+    background: #ff7a00;
+    transform: translateY(-1px);
+}
+
+
+/* ================================
+   FEATURES
+   ================================ */
+
+.features {
+    padding: 75px 5%;
+    background: #f5f7fb;
+}
+
+.features-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.features-title h2 {
+    margin: 0 0 8px;
+    font-size: 30px;
+}
+
+.features-title p {
+    margin: 0;
+    color: #64748b;
+}
+
+.features-grid {
+    max-width: 1050px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.feature {
+    background: white;
+    padding: 25px 20px;
+    border-radius: 14px;
+    text-align: center;
+    border: 1px solid #e5e7eb;
+}
+
+.feature-icon {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.feature h3 {
+    margin: 0 0 8px;
+}
+
+.feature p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* ================================
+   FOOTER
+   ================================ */
+
+.footer {
+    background: #111827;
+    color: #9ca3af;
+    text-align: center;
+    padding: 25px 15px;
+    font-size: 14px;
+}
+
+.footer strong {
+    color: #ff7a00;
+}
+
+
+/* ================================
+   TABLET
+   ================================ */
+
+@media (max-width: 950px) {
+
+    .header {
+        padding: 12px 4%;
+        flex-direction: column;
+    }
+
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* ================================
+   MOBILE
+   ================================ */
+
+@media (max-width: 600px) {
+
+    .header {
+        position: relative;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .nav {
+        width: 100%;
+        gap: 5px;
+    }
+
+    .nav a {
+        padding: 8px 9px;
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: 430px;
+        padding: 55px 18px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .hero-btn,
+    .hero-secondary {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .tools-section {
+        padding: 55px 18px;
+    }
+
+    .section-title h2 {
+        font-size: 28px;
+    }
+
+    .tools-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .tool-card {
+        padding: 25px 20px;
+    }
+
+    .tool-card p {
+        min-height: auto;
+    }
+
+    .features {
+        padding: 55px 18px;
+    }
+
+    .features-title h2 {
+        font-size: 26px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

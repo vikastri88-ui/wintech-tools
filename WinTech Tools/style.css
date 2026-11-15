@@ -1,0 +1,301 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #111827;
+}
+
+header {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+header p {
+    color: #cbd5e1;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 30px auto;
+    padding: 15px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.title {
+    text-align: center;
+}
+
+.status {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.keyboard-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 15px;
+}
+
+.keyboard {
+    min-width: 1350px;
+    display: flex;
+    gap: 15px;
+    background: #d1d5db;
+    padding: 15px;
+    border-radius: 12px;
+    align-items: flex-start;
+}
+
+.main-keyboard {
+    width: 800px;
+    flex-shrink: 0;
+}
+
+.row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.key {
+    height: 48px;
+    min-width: 48px;
+    padding: 4px;
+    border: 1px solid #9ca3af;
+    border-radius: 6px;
+    background: #f9fafb;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+
+    box-shadow: 0 2px 3px rgba(0,0,0,0.15);
+    user-select: none;
+}
+
+/* KEYS PRESSED = KESARIYA */
+.key.active {
+    background: #ff7a00;
+    color: white;
+    border-color: #e56700;
+    box-shadow: 0 0 8px rgba(255,122,0,0.5);
+}
+
+/* MAIN KEYBOARD */
+
+.esc {
+    width: 65px;
+}
+
+.function {
+    flex: 1;
+}
+
+.backspace {
+    width: 90px;
+}
+
+.tab {
+    width: 75px;
+}
+
+.caps {
+    width: 90px;
+}
+
+.enter {
+    width: 90px;
+}
+
+.shift {
+    width: 110px;
+}
+
+.ctrl {
+    width: 55px;
+}
+
+.space {
+    flex: 1;
+}
+
+/* NAVIGATION KEYS */
+
+.nav-section {
+    width: 240px;
+    flex-shrink: 0;
+}
+
+.nav-section .row {
+    justify-content: center;
+}
+
+.nav-key {
+    width: 70px;
+    min-width: 70px;
+}
+
+/* NUMPAD */
+
+.numpad {
+    width: 260px;
+    flex-shrink: 0;
+}
+
+.numpad-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.numpad .key {
+    width: 58px;
+    min-width: 58px;
+    height: 48px;
+}
+
+/* + और Enter जैसी बड़ी keys */
+
+.numpad .num-tall {
+    height: 102px;
+}
+
+.numpad .num-wide {
+    width: 122px;
+    min-width: 122px;
+}
+
+/* RESET */
+
+.reset-area {
+    text-align: center;
+    margin-top: 25px;
+}
+
+button {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #64748b;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .container {
+        padding: 10px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .keyboard-wrapper {
+        overflow-x: auto;
+    }
+}
+.home-button {
+    display: inline-block;
+    margin: 0 0 20px 0;
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: #111827;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.home-button:hover {
+    background: #ff7a00;
+}
+.test-header {
+    background: #111827;
+    color: white;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.test-logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.test-logo span {
+    color: #ff7a00;
+}
+
+.test-nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.test-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 11px;
+    border-radius: 7px;
+    font-size: 13px;
+}
+
+.test-nav a:hover {
+    background: #ff7a00;
+}
+
+@media (max-width: 750px) {
+
+    .test-header {
+        flex-direction: column;
+    }
+
+    .test-nav {
+        width: 100%;
+    }
+}
+.test-nav a.active {
+    background: #ff7a00;
+    color: white;
+}
